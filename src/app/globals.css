@@ -1,26 +1,76 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #00ff7a;
+  --color-secondary: #b3ffdd;
+  --color-background: #ffffff;
+  --color-text: #111827;
+  --shadow-neon: 0 0 10px #00ff7a;
+  --shadow-neon-hover: 0 0 15px #00ff7a;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Fira Code', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-primary);
+  }
+
+  a {
+    color: var(--color-secondary);
+  }
+
+  a:hover {
+    box-shadow: var(--shadow-neon-hover);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .btn-neon {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow-neon);
+  }
+
+  .btn-neon:hover {
+    box-shadow: var(--shadow-neon-hover);
+  }
+
+  .editor-font {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .bg-background {
+    background-color: var(--color-background);
+  }
+
+  .text-text {
+    color: var(--color-text);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .shadow-neon {
+    box-shadow: var(--shadow-neon);
+  }
 }
