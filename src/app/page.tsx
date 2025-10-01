@@ -1,12 +1,15 @@
 import { supabase } from '@/app/lib/supabase';
 
-console.log(supabase);
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-text flex items-center justify-center">
-      <div className="p-6 bg-primary text-white text-xl font-semibold rounded shadow-neon">
-        Neon test box
+    <div className="min-h-screen relative bg-background text-text flex flex-col">
+      <div>
+        <h1 className="text-4xl font-extrabold">
+          Master SQL. One query at a time.
+        </h1>
+        <p className="mt-4 text-lg text-slate-600">
+          Welcome to the QueryQuest prototype. Use the nav to explore pages.
+        </p>
       </div>
     </div>
   );

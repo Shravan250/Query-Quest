@@ -32,10 +32,12 @@
 
   a {
     color: var(--color-secondary);
+    text-decoration: none;
   }
 
   a:hover {
-    box-shadow: var(--shadow-neon-hover);
+    color: var(--shadow-neon-hover);
+    transition: all 0.3s ease;
   }
 }
 
