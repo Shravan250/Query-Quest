@@ -71,32 +71,44 @@ export default function TopNav({ mobileOpen, setMobileOpen }: TopNavProps) {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div
-            className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-600 ease-in-out z-40 ${
-              mobileOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
-          >
-            <div className="flex flex-col p-4 space-y-2 border border-slate-100">
-              {links.map((l) => (
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/20 z-30"
+              onClick={() => setMobileOpen(false)}
+            />
+
+            <div
+              className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-600 ease-in-out z-40 ${
+                mobileOpen ? 'translate-x-0' : 'translate-x-full'
+              }`}
+            >
+              <div className="flex flex-col p-4 space-y-2 border border-slate-100">
+                {links.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={`py-2 px-2 rounded-md ${
+                      pathname === l.href
+                        ? 'text-[#00FF7A]'
+                        : 'text-slate-700 hover:text-[#00FF7A]'
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+
                 <Link
-                  key={l.href}
-                  href={l.href}
-                  className={`py-2 px-2 rounded-md ${pathname === l.href ? 'text-[#00FF7A]' : 'text-slate-700 hover:text-[#00FF7A]'}`}
+                  href="/login"
+                  className="mt-2 inline-flex items-center justify-center px-3 py-2 rounded-md bg-[#00FF7A] text-white text-sm font-medium hover:shadow-md"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {l.label}
+                  Log In
                 </Link>
-              ))}
-
-              <Link
-                href="/login"
-                className="mt-2 inline-flex items-center justify-center px-3 py-2 rounded-md bg-[#00FF7A] text-white text-sm font-medium hover:shadow-md"
-                onClick={() => setMobileOpen(false)}
-              >
-                Log In
-              </Link>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>
